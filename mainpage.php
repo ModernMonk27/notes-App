@@ -19,6 +19,30 @@
 
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    #container{
+        margin-top: 120px;
+    }
+    #done, #allnotes{
+        display: none;
+    }
+    .container{
+        height: 100%;
+    }
+    #btns{
+        margin-bottom: 20px;
+    }
+    textarea{
+        width: 100%;
+        border-left-width: 30px;
+        color: red;
+        font-size: 17px;
+        border-left-color: blueviolet;
+        line-height: 1.5em;
+        max-width: 100%;
+    }
+
+  </style>
 
 </head>
 <body>
@@ -45,6 +69,24 @@
       </div>    
     </div>
   </nav>
+  <!--buttons -->
+  <div class="container" id ="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <div id="btns">
+                <button type="button" id="addnotes" class="btn btn-primary btn-lg">Add notes</button>
+                <button type="button" id="edit" class="btn btn-primary btn-lg pull-right">Edit</button>
+                <button type="button" id="done" class="btn green btn-lg pull-right">Done</button>
+                <button type="button" id="allnotes" class="btn btn-primary btn-lg">All Notes</button>
+            </div> 
+            <div id="text">
+                <textarea></textarea>
+            </div>
+
+        </div>
+        
+    </div>
+  </div>
   
   <!-- signup form -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
