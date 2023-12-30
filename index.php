@@ -1,3 +1,14 @@
+
+<?php
+session_start();
+include('connection.php');
+//logout
+include('logout.php');
+//remember me
+include('remember.php');
+?>
+
+
 <!DOCTYPE html>
   <head>
     <meta charset="UTF-8">
@@ -58,90 +69,95 @@
       <button type="button" class="btn btn-primary btn-lg signup greenbox" data-toggle="modal" data-target="#exampleModal" >Signup for free</button>
     </div>
     <!-- signup form -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create your account</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        
-        <div class="modal-body">
-          <div id='signupmessage'></div>
-          <form id="signinform">
-            <div class="form-group">
-              <label for="signupname">Name</label>
-              <input type="text" name="username" class="form-control" id="username"  placeholder="Enter ur Name">
-              
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Create Your Password</label>
-              <input type="password"  name="password1" class="form-control" id="password1" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword2">Confirm Password</label>
-              <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm Password">
-            </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          
-        </div>
-      </div>
-    </div>
-    </div>
-  <!-- login form -->
-  <!-- Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form method="post" id="signinform">
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Create your account</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          
           <div class="modal-body">
-            <form>
+            <div id='signupmessage'></div>
+            
               <div class="form-group">
-                <label for="loginemail">Email address</label>
-                <input type="email" class="form-control" id="loginemail" aria-describedby="emailHelp" placeholder="Enter email">
+                <label for="signupname">Name</label>
+                <input type="text" name="username" class="form-control" id="username"  placeholder="Enter ur Name">
+                
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
               <div class="form-group">
-                <label for="loginpassword">Password</label>
-                <input type="password" class="form-control" id="loginpassword" placeholder="Password">
+                <label for="exampleInputPassword1">Create Your Password</label>
+                <input type="password"  name="password1" class="form-control" id="password1" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword2">Confirm Password</label>
+                <input type="password" name="password2" class="form-control" id="password2" placeholder="Confirm Password">
               </div>
               <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="logincheck">
-                <label class="form-check-label" for="logincheck">Remember me</label>
-                <a class="pull-right" style = "cursor : pointer " data-dismiss="modal" data-toggle="modal" data-target="#forgotModal">Forgot Password?</a>
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
               </div>
-              
-            </form>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Login</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary pull-left">Register</button>
             
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </form>
+  <!-- login form -->
+  <!-- Modal -->
+  <form method="post" id="loginform">
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="loginmessage"></div>
+              
+                <div class="form-group">
+                  <label for="loginemail">Email address</label>
+                  <input type="email" class="form-control" name="loginemail" id="loginemail" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="loginpassword">Password</label>
+                  <input type="password" class="form-control" name="loginpassword" id="loginpassword" placeholder="Password">
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" name="rememberme" id="logincheck">
+                  <label class="form-check-label" for="logincheck">Remember me</label>
+                  <a class="pull-right" style = "cursor : pointer " data-dismiss="modal" data-toggle="modal" data-target="#forgotModal">Forgot Password?</a>
+                </div>
+                
+              
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary pull-left">Register</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
   <!-- Forgot password form -->
     <div class="modal fade" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
